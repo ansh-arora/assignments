@@ -25,3 +25,20 @@ for t in tw:
 #Library: A library is a collection of code built to perform common tasks. Library code tends to be relatively stable and bug free. Use of appropriate libraries can reduce the amount of code the need to be written. It will tend to reduce line of code counts for an application will increasing the rate at which functionality is delivered. In most cases, it is better to use a library routine than to write your own code.
 #API: An API (Application Programming Interface) is interface to some functionality which allows an application to access the available functionality. An API may be referred to as an Interface. API exist at many levels including system, library, framework, program, and application. APIs should be defined before the code implementing them is implemented.
 #Example: Go to a library and start reading books. If you are the application then the collection of books is the library. The shelves, the cupboards, and the compound that houses all this constitutes the framework. Everything you come in contact while performing the task of reading the books is the API.
+
+
+#Q5
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+client_credentials_manager = SpotifyClientCredentials(client_id='your client id', client_secret='your client secret')
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+playlists = sp.user_playlists('2slphad0xy3sag1v3hzhb8iqb')
+
+while playlists:
+     for i, playlist in enumerate(playlists['items']):
+         print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
+     if playlists['next']:
+         playlists = sp.next(playlists)
+     else:
+         playlists = None
