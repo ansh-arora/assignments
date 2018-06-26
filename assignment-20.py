@@ -85,6 +85,7 @@ mainloop()
 #     if n1:
 #         d[n1]=p1
 #         global set1
+#     print(d)
 #     set2=set(d)
 #     set3=set2-set1
 #     set1=set2
